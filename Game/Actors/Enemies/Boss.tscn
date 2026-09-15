@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://Game/Actors/Enemies/BossController.cs" id="1"]
+[ext_resource type="Script" path="res://Game/Combat/Health.cs" id="2"]
+[ext_resource type="Script" path="res://Game/Combat/Combatant.cs" id="3"]
+[ext_resource type="Script" path="res://Game/Combat/Hurtbox.cs" id="4"]
+[ext_resource type="Script" path="res://Game/Combat/Hitbox.cs" id="5"]
+[ext_resource type="Script" path="res://Game/Loot/LootGenerator.cs" id="6"]
+[ext_resource type="PackedScene" path="res://Game/Loot/GroundItem.tscn" id="7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_boss"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boss_attack"]
+size = Vector2(48, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aoe"]
+radius = 80.0
+
+[node name="Boss" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1")
+MinLootDrops = 4
+MaxLootDrops = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_boss")
+
+[node name="Placeholder" type="Polygon2D" parent="."]
+color = Color(1, 0.4, 0.2, 1)
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[node name="TelegraphVisual" type="Polygon2D" parent="."]
+visible = false
+color = Color(1, 0, 0, 0.5)
+polygon = PackedVector2Array(-80, -25, -56, -56, -25, -80, 25, -80, 56, -56, 80, -25, 80, 25, 56, 56, 25, 80, -25, 80, -56, 56, -80, 25)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2")
+MaxHealth = 300.0
+
+[node name="Combatant" type="Node" parent="."]
+script = ExtResource("3")
+Team = 1
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_boss")
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+shape = SubResource("RectangleShape2D_boss_attack")
+
+[node name="AoeHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5")
+Damage = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AoeHitbox"]
+shape = SubResource("CircleShape2D_aoe")
+
+[node name="LootGenerator" type="Node" parent="."]
+script = ExtResource("6")
+GroundItemScene = ExtResource("7")

@@ -16,8 +16,8 @@ namespace Game.Items;
 /// </summary>
 public class ItemInstance
 {
-    public string InstanceId { get; }
-    public string BaseId { get; }
+    public string InstanceId { get; set; }
+    public string BaseId { get; set; }
     public ItemRarity Rarity { get; set; }
 
     /// <summary>
@@ -43,6 +43,8 @@ public class ItemInstance
     /// these get populated/changed.
     /// </summary>
     public List<AffixInstance> Affixes { get; set; } = new();
+
+    public ItemInstance() { }
 
     public ItemInstance(string baseId, ItemRarity rarity, int itemLevel, int stackCount = 1)
     {

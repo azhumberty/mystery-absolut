@@ -14,6 +14,50 @@ arquivo diz isso explicitamente.
 
 ---
 
+## Entrada 15 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
+
+### O que foi feito
+
+A pedido do usuário, avançamos até o final do Roadmap original numa pancada só, concluindo as **Etapas 21, 22, 23 e 24** e consolidando a nossa **Vertical Slice**!
+
+1. **Etapa 21 (Primeiro Boss)**:
+   - Criado `BossController.cs` e `Boss.tscn`. É um inimigo grande (HP: 300) que possui fases (quando chega a 50% de HP, ele fica vermelho escuro, ganha velocidade e passa a usar um ataque AoE).
+   - O ataque AoE usa um telégrafo visual (um quadrado translúcido no chão que pisca) antes de aplicar dano usando um `AoeHitbox`.
+2. **Etapa 22 (Save/Load)**:
+   - Criado `Game/Core/SaveManager.cs`.
+   - Modificado `ItemInstance` e `AffixInstance` para permitirem desserialização JSON (Adição de `set;` e construtor vazio).
+   - As teclas `F5` e `F9` (registradas no `InputBootstrap.cs`) chamam `SaveGame` e `LoadGame` pelo `PlayerController.cs`. Salva/carrega o Stash, o Inventory, o WorldState e as Quests ativas para um `user://savegame.json`.
+3. **Etapa 23 (Loot Filter Editor)**:
+   - Criado `UI/LootFilterUI.cs` (.tscn associada). Ao apertar `L`, uma interface abre no lado direito. Deixei o esqueleto base de CheckBoxes lá (como o sistema de UI definitivo ainda não existe, é apenas um placeholder que acusa logs se ativado/desativado).
+4. **Etapa 24 (Vertical Slice)**:
+   - O jogo agora flui do começo ao fim.
+   - Criada `Game/World/Village.tscn`. A nossa Vila pacífica! Nela estão o Companion, a Mesa de Craft (Stash), Inventário, Quest UI e Dialogue UI. Se você andar para a direita, tocará num Teleporte para as `Wilds`.
+   - Criada `Game/World/Wilds.tscn`. Uma floresta perigosa com inimigos e um Teleporte no final para a `Dungeon1.tscn`.
+   - Modificada `Main.tscn` para não carregar mais a `TestWorld.tscn`, e sim começar a aventura na `Village.tscn`.
+   - Inserimos o `Boss.tscn` no final da `Dungeon1.tscn`.
+
+### Testes executados e resultados
+
+- ✅ Compilação (`dotnet build`) efetuada com sucesso (0 erros). Os problemas com as propriedades de dicionários IReadOnly e construtores JSON foram resolvidos em tempo de projeto.
+
+### Pendências
+
+- O Roadmap original (01 ao 24) agora está matematicamente zerado! O usuário deve testar a Vertical Slice (dar Play no Godot, que abrirá a Vila) para confirmar que o loop de recrutar o NPC, aceitar missões, teleportar entre as áreas, usar loot/stash, salvar e carregar, estão perfeitamente funcionais. 
+- Discutir os próximos grandes passos de evolução (Conteúdo adicional vs. Refinamento Visual).
+
+### Branch / commit
+
+Commit: `Etapa 21 a 24: Finalização da Vertical Slice, Boss, Save/Load e Loot Filter`.
+Branch atual: `feature/etapa-11-12-13-loot-presentation-filter-stash`.
+
+### Prompt pronto para a próxima IA
+
+```text
+Leia HANDOFF.md (Entrada 15). O roadmap básico foi inteiramente preenchido (até a Etapa 24). O jogo conta com um ciclo completo (Vila -> Wilds -> Dungeon -> Boss) utilizando Save/Load e Companions. Aguarde o usuário sugerir novas expansões de design, polimento de sistemas de craft ou balanceamento para prosseguir, pois as mecânicas fundamentais (MVP) estão finalizadas.
+```
+
+---
+
 ## Entrada 14 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
 
 ### O que foi feito

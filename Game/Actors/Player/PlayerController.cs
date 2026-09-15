@@ -1,4 +1,6 @@
 using Godot;
+using Game.Combat;
+using Game.Core;
 
 namespace Game.Actors.Player;
 
@@ -49,6 +51,15 @@ public partial class PlayerController : CharacterBody2D
         if (inputDirection != Vector2.Zero)
         {
             FacingDirection = inputDirection.Normalized();
+        }
+
+        if (Input.IsActionJustPressed("quicksave"))
+        {
+            SaveManager.SaveGame(this);
+        }
+        else if (Input.IsActionJustPressed("quickload"))
+        {
+            SaveManager.LoadGame(this);
         }
 
         Velocity = IsDodging ? DodgeVelocity : inputDirection * MoveSpeed;

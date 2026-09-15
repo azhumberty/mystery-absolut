@@ -10,8 +10,10 @@ namespace Game.Items;
 /// </summary>
 public class AffixInstance
 {
-    public string DefinitionId { get; }
+    public string DefinitionId { get; set; }
     public double RolledValue { get; set; }
+
+    public AffixInstance() { }
 
     public AffixInstance(string definitionId, double rolledValue)
     {

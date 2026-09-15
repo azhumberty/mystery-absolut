@@ -161,4 +161,26 @@ public partial class Stash : Node
 
         return false;
     }
+
+    // Etapa 22 helpers
+    public void ForceAdd(ItemInstance instance)
+    {
+        if (instance != null)
+        {
+            ItemBaseDefinition definition = instance.GetBase();
+            if (definition != null) TryAdd(instance, definition);
+        }
+    }
+
+    public List<ItemInstance> GetAllItems()
+    {
+        List<ItemInstance> all = new();
+        foreach (var kvp in _slots) all.AddRange(kvp.Value);
+        return all;
+    }
+
+    public void Clear()
+    {
+        foreach (var kvp in _slots) kvp.Value.Clear();
+    }
 }

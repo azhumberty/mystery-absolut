@@ -3,9 +3,12 @@
 [ext_resource type="PackedScene" path="res://Game/Actors/Player/Player.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Game/Actors/Companions/Companion.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://Game/Actors/Enemies/Enemy.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Game/Actors/Enemies/Boss.tscn" id="3b"]
 [ext_resource type="PackedScene" path="res://UI/QuestUI.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://UI/InventoryUI.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://UI/StashUI.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://UI/DialogueUI.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://UI/LootFilterUI.tscn" id="8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_horizontal"]
 size = Vector2(800, 32)
@@ -85,8 +88,11 @@ position = Vector2(-20, -20)
 [node name="Enemy4" parent="EnemyGroup2" instance=ExtResource("3")]
 position = Vector2(20, 20)
 
+[node name="Boss" parent="." instance=ExtResource("3b")]
+position = Vector2(200, 0)
+
 [node name="QuestUI" parent="." instance=ExtResource("4")]
-
 [node name="InventoryUI" parent="." instance=ExtResource("5")]
-
 [node name="StashUI" parent="." instance=ExtResource("6")]
+[node name="DialogueUI" parent="." instance=ExtResource("7")]
+[node name="LootFilterUI" parent="." instance=ExtResource("8")]

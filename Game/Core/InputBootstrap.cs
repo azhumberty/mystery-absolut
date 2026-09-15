@@ -49,6 +49,10 @@ public partial class InputBootstrap : Node
 
         // Etapa 19: Quest Log
         RegisterAction("quest_log", Key.J);
+
+        // Etapa 22: Save / Load
+        RegisterAction("quicksave", Key.F5);
+        RegisterAction("quickload", Key.F9);
     }
 
     private static void RegisterAction(string action, params Key[] keys)

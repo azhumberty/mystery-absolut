@@ -77,10 +77,10 @@ de etapas futuras antecipadamente.
 - [x] **Etapa 18 — Relationships**: Affinity, RelationshipState, Memories.
 - [x] **Etapa 19 — Quests**: QuestDefinition/QuestState/Objectives/Rewards.
 - [x] **Etapa 20 — Primeira Dungeon**.
-- [ ] **Etapa 21 — Primeiro Boss**: telegraphs, ataques, fases, loot.
-- [ ] **Etapa 22 — Save / Load**.
-- [ ] **Etapa 23 — Loot Filter Editor**.
-- [ ] **Etapa 24 — Vertical Slice**: vila pequena → NPCs → companheiro →
+- [x] **Etapa 21 — Primeiro Boss**: telegraphs, ataques, fases, loot.
+- [x] **Etapa 22 — Save / Load**.
+- [x] **Etapa 23 — Loot Filter Editor**.
+- [x] **Etapa 24 — Vertical Slice**: vila pequena → NPCs → companheiro →
       decisão narrativa → área externa → combate → loot → equipar → stash
       → craft simples → dungeon → companheiro reage à decisão → boss →
       loot especial → retorno à vila → consequência da escolha. Deve

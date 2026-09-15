@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" path="res://Game/Actors/Player/Player.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://Game/Actors/Enemies/Enemy.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://UI/QuestUI.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://UI/InventoryUI.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://UI/StashUI.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://UI/DialogueUI.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://UI/LootFilterUI.tscn" id="8"]
+[ext_resource type="Script" path="res://Game/World/Teleporter.cs" id="9"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_teleporter"]
+size = Vector2(80, 80)
+
+[node name="Wilds" type="Node2D"]
+
+[node name="Floor" type="Polygon2D" parent="."]
+color = Color(0.3, 0.4, 0.1, 1)
+polygon = PackedVector2Array(-800, -600, 800, -600, 800, 600, -800, 600)
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(-700, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("3")]
+position = Vector2(0, 0)
+
+[node name="Enemy2" parent="." instance=ExtResource("3")]
+position = Vector2(200, 100)
+
+[node name="Teleporter" type="Area2D" parent="."]
+position = Vector2(700, 0)
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("9")
+TargetScenePath = "res://Game/World/Dungeon1.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter"]
+shape = SubResource("RectangleShape2D_teleporter")
+
+[node name="Visual" type="Polygon2D" parent="Teleporter"]
+color = Color(0.8, 0.2, 0.8, 1)
+polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+
+[node name="QuestUI" parent="." instance=ExtResource("4")]
+[node name="InventoryUI" parent="." instance=ExtResource("5")]
+[node name="StashUI" parent="." instance=ExtResource("6")]
+[node name="DialogueUI" parent="." instance=ExtResource("7")]
+[node name="LootFilterUI" parent="." instance=ExtResource("8")]

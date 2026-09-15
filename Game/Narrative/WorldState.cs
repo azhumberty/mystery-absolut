@@ -26,6 +26,20 @@ public static class WorldState
         Set(key, Get(key) + amount);
     }
 
+    public static Dictionary<string, int> GetAll()
+    {
+        return new Dictionary<string, int>(_state);
+    }
+
+    public static void SetAll(Dictionary<string, int> data)
+    {
+        _state.Clear();
+        foreach (var kvp in data)
+        {
+            _state[kvp.Key] = kvp.Value;
+        }
+    }
+
     public static void Clear()
     {
         _state.Clear();
