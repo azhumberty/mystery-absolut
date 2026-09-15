@@ -95,10 +95,13 @@ public partial class Inventory : Node
         }
 
         int removed = Mathf.Min(amount, slot.StackCount);
-        slot.StackCount -= removed;
-        if (slot.StackCount <= 0)
+        if (removed == slot.StackCount)
         {
             _slots.Remove(slot);
+        }
+        else
+        {
+            slot.StackCount -= removed;
         }
 
         EmitSignal(SignalName.InventoryChanged);
