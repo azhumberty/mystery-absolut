@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://UI/DialogueUI.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://UI/LootFilterUI.tscn" id="8"]
 [ext_resource type="Script" path="res://Game/World/Teleporter.cs" id="9"]
+[ext_resource type="PackedScene" path="res://UI/SkillTreeUI.tscn" id="10"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_teleporter"]
 size = Vector2(80, 80)
@@ -46,3 +47,4 @@ polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
 [node name="StashUI" parent="." instance=ExtResource("6")]
 [node name="DialogueUI" parent="." instance=ExtResource("7")]
 [node name="LootFilterUI" parent="." instance=ExtResource("8")]
+[node name="SkillTreeUI" parent="." instance=ExtResource("10")]

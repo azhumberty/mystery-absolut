@@ -62,6 +62,16 @@ public partial class PlayerController : CharacterBody2D
             SaveManager.LoadGame(this);
         }
 
+        if (Input.IsKeyPressed(Key.Q) && Input.IsActionJustPressed("ui_accept"))
+        {
+            // Just map to Q directly for now
+            GetNodeOrNull<SkillManager>("SkillManager")?.CastFireball(FacingDirection, this);
+        }
+        else if (Input.IsKeyPressed(Key.Q)) // basic key press logic without setting up InputMap
+        {
+            GetNodeOrNull<SkillManager>("SkillManager")?.CastFireball(FacingDirection, this);
+        }
+
         Velocity = IsDodging ? DodgeVelocity : inputDirection * MoveSpeed;
         MoveAndSlide();
     }

@@ -87,5 +87,13 @@ de etapas futuras antecipadamente.
       provar que Combate + Itemização + Personagens + Escolhas funcionam
       juntos.
 
+### Fase 5: Expansão de RPG e Sistemas Avançados (As Etapas Além)
+- [ ] **Etapa 25 — Status do Jogador e Nivelamento**: XP, Level, Força/Destreza/Inteligência e HP/Mana Escaláveis.
+- [ ] **Etapa 26 — Habilidades Ativas (Skills)**: Adição de Magias e Habilidades com cooldowns e custo de Mana.
+- [ ] **Etapa 27 — Árvore de Talentos (Passivas)**: Interface para gastar pontos ganhos ao subir de nível, conectando nós.
+- [ ] **Etapa 28 — Mercadores (Shop)**: NPCs na Vila que vendem itens e compram seus itens em troca de Ouro.
+- [ ] **Etapa 29 — Geração Procedural de Dungeons**: Dungeons que mudam de layout a cada visita (Salas Aleatórias).
+- [ ] **Etapa 30 — Áudio (SFX e Música)**: Integração do sistema de AudioStreamPlayer do Godot para ataques, loot e música ambiente.
+
 Contexto completo de cada pilar/sistema está em MASTER_CONTEXT.md e no
 MASTER_HANDOFF salvo no projeto Claude vinculado a este repositório.

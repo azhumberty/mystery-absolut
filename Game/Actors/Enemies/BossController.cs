@@ -222,5 +222,11 @@ public partial class BossController : CharacterBody2D
         // We'll rely on the high drop count.
 
         QuestManager.ReportObjectiveProgress("kill_boss", 1);
+        
+        var player = GetTree().GetFirstNodeInGroup("player");
+        if (player != null)
+        {
+            player.GetNodeOrNull<Combat.Stats>("Stats")?.AddXP(150f);
+        }
     }
 }

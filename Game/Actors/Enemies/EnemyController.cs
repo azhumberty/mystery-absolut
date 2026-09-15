@@ -162,5 +162,11 @@ public partial class EnemyController : CharacterBody2D
             GetParent());
 
         QuestManager.ReportObjectiveProgress("kill_enemy_dungeon", 1);
+        
+        var player = GetTree().GetFirstNodeInGroup("player");
+        if (player != null)
+        {
+            player.GetNodeOrNull<Combat.Stats>("Stats")?.AddXP(20f);
+        }
     }
 }
