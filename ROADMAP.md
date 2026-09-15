@@ -68,8 +68,8 @@ de etapas futuras antecipadamente.
       Currency/Unique), guardar/retirar pela `StashUI` (tecla T,
       independente do Inventário). *(implementado nesta branch;
       verificação local ainda pendente — ver CURRENT_STATUS.md/HANDOFF.md)*
-- [ ] **Etapa 14 — Primeiro Companion**: follow, HP, stats, equipamento,
-      combate.
+- [x] **Etapa 14 — Primeiro Companion**: follow, HP, stats, equipamento,
+      combate. *(implementado nesta branch; verificação local ainda pendente)*
 - [ ] **Etapa 15 — Companion AI**: Follow/Attack/Retreat/Regroup.
 - [ ] **Etapa 16 — Dialogue**: sistema data-driven.
 - [ ] **Etapa 17 — Choices**: Choice/Condition/Action/Consequences,

@@ -39,4 +39,25 @@ public partial class Health : Node
             EmitSignal(SignalName.Died);
         }
     }
+
+    public void Heal(float amount)
+    {
+        if (IsDead || amount <= 0f)
+        {
+            return;
+        }
+
+        CurrentHealth = Mathf.Min(MaxHealth, CurrentHealth + amount);
+        // Pode emitir sinal Healed se necessário futuramente
+    }
+
+    public void Revive(float percentage = 0.5f)
+    {
+        if (!IsDead)
+        {
+            return;
+        }
+
+        CurrentHealth = MaxHealth * Mathf.Clamp(percentage, 0f, 1f);
+    }
 }

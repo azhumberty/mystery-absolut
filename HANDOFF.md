@@ -14,6 +14,49 @@ arquivo diz isso explicitamente.
 
 ---
 
+## Entrada 12 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
+
+### O que foi feito
+
+1. **Correção do Bug de Duplicação no Inventário**: O usuário relatou que ao clicar em itens no inventário para equipá-los ou usá-los, eles se multiplicavam infinitamente na interface. 
+   - **Root Cause**: O método `RemoveItem` em `Inventory.cs` alterava `slot.StackCount -= removed`, diminuindo o item original na memória para 0, sem destruí-lo. Ao ser devolvido ao inventário ou ao ter a tela re-renderizada, o mesmo item aparecia como uma cópia fantasma (com 0 unidades).
+   - **Fix**: Agora, `RemoveItem` não zera o `StackCount` se todo o stack estiver sendo movido para outro lugar, preservando a integridade física do item (já commitado).
+2. **Implementação da Etapa 14 (Primeiro Companion)**: 
+   - Criado `Game/Actors/Companions/Companion.tscn` e `CompanionController.cs`.
+   - O Companion possui a mesma arquitetura de combate do Inimigo e Player (`Health`, `Combatant`, `Hurtbox`, `Hitbox`), além de `Equipment` (vazio para suportar futura UI).
+   - **Máquina de Estados**: `Idle`, `Follow` (segue o player), `Attack` (persegue e ataca inimigos), `Recover` e `Downed`.
+   - **Sistema de Downed**: Ao chegar a 0 HP, o Companion não desaparece (QueueFree), mas entra em estado de incapacitação (transparente, sem colisão) e se auto-revive (`Health.Revive(0.5f)`) após 10 segundos, retornando ao combate para evitar frustração de permadeath nesta fase.
+   - Modificado `EnemyController` para ser adicionado ao grupo `"enemy"` (permitindo que o Companion o encontre).
+   - Modificado `Health.cs` para suportar `Heal(float)` e `Revive(float percentage)`.
+   - Adicionado à `TestWorld.tscn` ao lado do jogador para testes imediatos.
+
+### Como funciona
+
+- `CompanionController` busca o Player via grupo `"player"` e Inimigos via grupo `"enemy"`. 
+- Se a distância para o player passar de `FollowRange`, ele segue. Se um inimigo se aproximar em `DetectionRange`, ele ataca.
+- Usa `MoveAndSlide` na direção do alvo da mesma forma que os inimigos.
+
+### Testes executados e resultados
+
+- ✅ Compilação executada com sucesso (`dotnet build`). 0 erros.
+
+### Pendências
+
+- O usuário precisa testar o jogo localmente para ver se o Companion segue corretamente e ataca os inimigos na arena.
+
+### Branch / commit
+
+Trabalho feito e já commitado na mesma branch `feature/etapa-11-12-13-loot-presentation-filter-stash`. 
+O usuário fará o commit/push locais.
+
+### Prompt pronto para a próxima IA
+
+```text
+Leia HANDOFF.md (Entrada 12, a mais recente). A Etapa 14 (Primeiro Companion) foi implementada. O Companion segue o player, ataca inimigos automaticamente e entra em estado "Downed" por 10s se morrer. O usuário deve realizar um teste no Godot para ver se o comportamento do Companion está fluido e o combate entre IA funciona. NÃO inicie a Etapa 15 (Companion AI Avançada - Retreat/Regroup) sem confirmação de que os testes passaram.
+```
+
+---
+
 ## Entrada 11 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
 
 ### O que foi feito

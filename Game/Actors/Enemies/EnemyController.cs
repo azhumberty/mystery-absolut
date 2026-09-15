@@ -49,6 +49,7 @@ public partial class EnemyController : CharacterBody2D
 
     public override void _Ready()
     {
+        AddToGroup("enemy");
         _player = GetTree().GetFirstNodeInGroup("player") as Node2D;
         _health = GetNode<Health>("Health");
         _hitbox = GetNode<Hitbox>("AttackHitbox");
