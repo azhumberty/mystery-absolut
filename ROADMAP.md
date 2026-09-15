@@ -74,9 +74,9 @@ de etapas futuras antecipadamente.
 - [x] **Etapa 16 — Dialogue**: sistema data-driven.
 - [x] **Etapa 17 — Choices**: Choice/Condition/Action/Consequences,
       WorldState.
-- [ ] **Etapa 18 — Relationships**: Affinity, RelationshipState, Memories.
-- [ ] **Etapa 19 — Quests**: QuestDefinition/QuestState/Objectives/Rewards.
-- [ ] **Etapa 20 — Primeira Dungeon**.
+- [x] **Etapa 18 — Relationships**: Affinity, RelationshipState, Memories.
+- [x] **Etapa 19 — Quests**: QuestDefinition/QuestState/Objectives/Rewards.
+- [x] **Etapa 20 — Primeira Dungeon**.
 - [ ] **Etapa 21 — Primeiro Boss**: telegraphs, ataques, fases, loot.
 - [ ] **Etapa 22 — Save / Load**.
 - [ ] **Etapa 23 — Loot Filter Editor**.

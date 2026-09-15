@@ -1,0 +1,21 @@
+[
+  {
+    "id": "q_first_dungeon",
+    "name": "Limpar a Primeira Masmorra",
+    "description": "Mate os monstros que estão assombrando a velha masmorra.",
+    "objectives": [
+      {
+        "id": "kill_enemy_dungeon",
+        "description": "Matar inimigos na Dungeon 1",
+        "targetAmount": 3
+      }
+    ],
+    "rewards": [
+      {
+        "type": "affinity",
+        "id": "companion",
+        "amount": 10
+      }
+    ]
+  }
+]

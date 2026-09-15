@@ -14,6 +14,51 @@ arquivo diz isso explicitamente.
 
 ---
 
+## Entrada 14 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
+
+### O que foi feito
+
+A pedido do usuário, implementamos as **Etapas 18, 19 e 20** em conjunto:
+
+1. **Etapa 18 (Relationships)**:
+   - Adicionado `RelationshipManager.cs` como helper do `WorldState` para encapsular `Affinity` e `Memories` do Companion e de outros NPCs de forma mais semântica. 
+2. **Etapa 19 (Quests)**:
+   - Criados `QuestDefinition.cs`, `QuestObjective.cs`, e `QuestReward.cs`.
+   - Adicionado `QuestManager.cs` que lê o arquivo `quests.json` e rastreia objetivos.
+   - Os inimigos chamam o `QuestManager.ReportObjectiveProgress` ao morrer. Quando completo, quests dão recompensas de afinidade.
+   - Criada a UI de Quests (`QuestUI.cs` e `.tscn`) acionada pela tecla `J` que exibe missões ativas e progresso.
+3. **Etapa 20 (Dungeon 1)**:
+   - Criada a cena `Game/World/Dungeon1.tscn`, nossa primeira masmorra fechada.
+   - Adicionado `Teleporter.cs` na `TestWorld.tscn` (quadrado rosa à direita). Ao tocar nele, o player é transportado para `Dungeon1` e a `q_first_dungeon` é auto-aceita para fins de teste.
+
+### Como funciona
+
+- O jogador nasce na `TestWorld`. Se ele for para a direita, colide com o `Teleporter`.
+- O jogo troca de cena (`GetTree().ChangeSceneToFile`) e entra na Dungeon, aceitando a missão "Limpar a Primeira Masmorra".
+- Ao apertar `J`, o jogador vê "Matar inimigos na Dungeon 1: 0/3".
+- Ao matar os inimigos da Dungeon, o contador aumenta. Quando chega a 3, a quest é concluída, a UI é limpa e o `RelationshipManager` bonifica a afinidade com o Companion em +10.
+
+### Testes executados e resultados
+
+- ✅ Compilação efetuada (0 avisos, 0 erros). O Teleporter, o QuestManager e a UI foram todos tipados corretamente.
+
+### Pendências
+
+- Nenhuma. Tudo pronto para teste in-game. O usuário validará as 3 etapas de uma vez.
+
+### Branch / commit
+
+Commit: `Etapa 18, 19 e 20: Relationships, Quests e Primeira Dungeon`.
+Branch atual: `feature/etapa-11-12-13-loot-presentation-filter-stash` (ou main se estivermos trabalhando nela).
+
+### Prompt pronto para a próxima IA
+
+```text
+Leia HANDOFF.md (Entrada 14). As Etapas 18, 19 e 20 (Afinidade, Missões e Dungeon 1) foram concluídas. Existe um portal rosa na TestWorld que te leva pra Dungeon e ativa a Quest. O jogador pode usar J para ver os objetivos. Aguarde o feedback do usuário sobre a jogabilidade. Não inicie a Etapa 21 (Primeiro Boss) até receber confirmação.
+```
+
+---
+
 ## Entrada 13 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
 
 ### O que foi feito

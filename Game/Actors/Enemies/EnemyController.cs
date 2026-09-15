@@ -1,6 +1,7 @@
 using Godot;
 using Game.Combat;
 using Game.Loot;
+using Game.Quests;
 
 namespace Game.Actors.Enemies;
 
@@ -159,5 +160,7 @@ public partial class EnemyController : CharacterBody2D
             new DropTable(LootDropChance, MinLootDrops, MaxLootDrops),
             GlobalPosition,
             GetParent());
+
+        QuestManager.ReportObjectiveProgress("kill_enemy_dungeon", 1);
     }
 }

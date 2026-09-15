@@ -46,6 +46,9 @@ public partial class InputBootstrap : Node
         
         // Etapa 16: Interact
         RegisterAction("interact", Key.E);
+
+        // Etapa 19: Quest Log
+        RegisterAction("quest_log", Key.J);
     }
 
     private static void RegisterAction(string action, params Key[] keys)

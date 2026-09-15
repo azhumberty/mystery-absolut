@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://Game/Actors/Player/Player.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://Game/Actors/Companions/Companion.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://Game/Actors/Enemies/Enemy.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://UI/QuestUI.tscn" id="4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_horizontal"]
+size = Vector2(800, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_vertical"]
+size = Vector2(32, 600)
+
+[node name="Dungeon1" type="Node2D"]
+
+[node name="Floor" type="Polygon2D" parent="."]
+color = Color(0.1, 0.1, 0.15, 1)
+polygon = PackedVector2Array(-400, -300, 400, -300, 400, 300, -400, 300)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Top" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, -300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top"]
+shape = SubResource("RectangleShape2D_wall_horizontal")
+
+[node name="Visual" type="Polygon2D" parent="Walls/Top"]
+color = Color(0.2, 0.2, 0.3, 1)
+polygon = PackedVector2Array(-400, -16, 400, -16, 400, 16, -400, 16)
+
+[node name="Bottom" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom"]
+shape = SubResource("RectangleShape2D_wall_horizontal")
+
+[node name="Visual" type="Polygon2D" parent="Walls/Bottom"]
+color = Color(0.2, 0.2, 0.3, 1)
+polygon = PackedVector2Array(-400, -16, 400, -16, 400, 16, -400, 16)
+
+[node name="Left" type="StaticBody2D" parent="Walls"]
+position = Vector2(-400, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left"]
+shape = SubResource("RectangleShape2D_wall_vertical")
+
+[node name="Visual" type="Polygon2D" parent="Walls/Left"]
+color = Color(0.2, 0.2, 0.3, 1)
+polygon = PackedVector2Array(-16, -300, 16, -300, 16, 300, -16, 300)
+
+[node name="Right" type="StaticBody2D" parent="Walls"]
+position = Vector2(400, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
+shape = SubResource("RectangleShape2D_wall_vertical")
+
+[node name="Visual" type="Polygon2D" parent="Walls/Right"]
+color = Color(0.2, 0.2, 0.3, 1)
+polygon = PackedVector2Array(-16, -300, 16, -300, 16, 300, -16, 300)
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(-300, 0)
+
+[node name="Companion" parent="." instance=ExtResource("2")]
+position = Vector2(-350, 0)
+
+[node name="EnemyGroup1" type="Node2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="Enemy" parent="EnemyGroup1" instance=ExtResource("3")]
+position = Vector2(-50, -50)
+
+[node name="Enemy2" parent="EnemyGroup1" instance=ExtResource("3")]
+position = Vector2(50, -50)
+
+[node name="EnemyGroup2" type="Node2D" parent="."]
+position = Vector2(250, 150)
+
+[node name="Enemy3" parent="EnemyGroup2" instance=ExtResource("3")]
+position = Vector2(-20, -20)
+
+[node name="Enemy4" parent="EnemyGroup2" instance=ExtResource("3")]
+position = Vector2(20, 20)
+
+[node name="QuestUI" parent="." instance=ExtResource("4")]
