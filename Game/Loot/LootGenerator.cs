@@ -59,7 +59,7 @@ public partial class LootGenerator : Node
 
         var groundItem = GroundItemScene.Instantiate<GroundItem>();
         groundItem.Payload = instance;
-        parent.AddChild(groundItem);
+        parent.CallDeferred("add_child", groundItem);
         groundItem.GlobalPosition = worldPosition + RandomOffset();
     }
 
