@@ -18,15 +18,29 @@ public partial class InputBootstrap : Node
         RegisterAction("move_left", Key.A, Key.Left);
         RegisterAction("move_right", Key.D, Key.Right);
 
+        // Etapa 2 (Combat Foundation) + Etapa 3 (Dodge/Block). Key choices
+        // are placeholders (arbitrary, easily remapped later) — picked
+        // plain letter/space keys deliberately, not modifier keys like
+        // Shift/Ctrl, to avoid any ambiguity about whether Godot's Key
+        // enum exposes a bare "generic modifier" keycode.
+        RegisterAction("attack", Key.Space);
+        RegisterAction("dodge", Key.C);
+        RegisterAction("block", Key.X);
+
+        // Etapa 7 (Inventory): toggles the basic inventory panel
+        // (UI/InventoryUI.cs). Same reasoning as attack/dodge/block — a
+        // plain letter key, not a modifier.
+        RegisterAction("inventory", Key.I);
+
+        // Etapa 13 (Stash): toggles the stash panel (UI/StashUI.cs),
+        // independent of "inventory" so both can be open at once.
+        RegisterAction("stash", Key.T);
+
         // Reserved for upcoming stages. Intentionally NOT bound to any key
         // yet — declaring the action here only reserves the name so future
-        // systems (Etapa 2+) can reference it without touching this file.
-        // RegisterAction("attack");
+        // systems can reference it without touching this file.
         // RegisterAction("skill_1");
-        // RegisterAction("dodge");
-        // RegisterAction("block");
         // RegisterAction("interact");
-        // RegisterAction("inventory");
     }
 
     private static void RegisterAction(string action, params Key[] keys)

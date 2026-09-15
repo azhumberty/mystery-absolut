@@ -6,32 +6,68 @@ de etapas futuras antecipadamente.
 
 - [x] **Etapa 0 — Fundação**: estrutura mínima de pastas, documentação
       permanente (este conjunto de arquivos), namespaces, cena inicial,
-      bootstrap. *(implementado nesta branch; verificação local pendente —
-      ver CURRENT_STATUS.md)*
+      bootstrap. **Verificada localmente pelo usuário (vídeo conferido) —
+      concluída de verdade.**
 - [x] **Etapa 1 — Player Movement**: `CharacterBody2D`, movimento 8
       direções com diagonal normalizada, colisão, câmera, mapa de teste
-      simples. *(implementado nesta branch; verificação local pendente —
-      ver CURRENT_STATUS.md)*
-- [ ] **Etapa 2 — Combat Foundation**: `Combatant`, `Health`, `Damage`,
-      `Hitbox`, `Hurtbox`, Basic Attack, Dummy de teste.
-- [ ] **Etapa 3 — Dodge / Block**: dodge, i-frame, cooldown, block, base de
-      parry.
-- [ ] **Etapa 4 — Primeiro inimigo**: IA Idle/Chase/Attack/Dead.
-- [ ] **Etapa 5 — Loot básico**: `DropTable`, `LootGenerator`,
-      `GroundItem`, pickup.
-- [ ] **Etapa 6 — Item System**: `ItemBaseDefinition`, `ItemInstance`,
-      Rarity, ItemLevel, Tags.
-- [ ] **Etapa 7 — Inventory**: stack, pickup, remove, UI básica.
-- [ ] **Etapa 8 — Equipment**: todos os slots (Weapon, Offhand, Helmet,
-      Chest, Gloves, Boots, Amulet, Ring 1, Ring 2).
-- [ ] **Etapa 9 — Affixes**: Prefix/Suffix, tiers, pools, weighted rolls.
-- [ ] **Etapa 10 — Crafting**: primeiros `CraftingEffect`s (equivalentes a
-      Transmutation...Chaos), nomes temporários somente em dados.
-- [ ] **Etapa 11 — Loot Presentation**: labels, rarity visual, glow, beam,
-      sons, partículas básicas.
-- [ ] **Etapa 12 — Loot Filter**: rules, conditions, actions, show/hide,
-      font, glow, beam, sound.
-- [ ] **Etapa 13 — Stash**: General/Equipment/Currency/Unique.
+      simples. **Verificada localmente pelo usuário (vídeo conferido) —
+      concluída de verdade.**
+- [x] **Etapa 2 — Combat Foundation**: `Combatant`, `Health`, `DamageInfo`,
+      `Hitbox`, `Hurtbox`, `PlayerBasicAttack`, `Dummy` de teste.
+      **Verificada localmente pelo usuário (vídeo conferido).**
+- [x] **Etapa 3 — Dodge / Block**: `PlayerDodge` (dash + i-frame +
+      cooldown), `PlayerBlock` (redução de dano + base de parry via
+      `Hurtbox.Parried`). **Verificada localmente pelo usuário (vídeo
+      conferido).**
+- [x] **Etapa 4 — Primeiro inimigo**: IA Idle/Chase/Attack/Recover/Dead
+      (`EnemyController`), reaproveitando Health/Combatant/Hitbox/Hurtbox
+      do player sem alterá-los. **Verificada localmente pelo usuário
+      (vídeo conferido).**
+- [x] **Etapa 5 — Loot básico**: `DropTable`, `LootGenerator`,
+      `GroundItem`, pickup automático ao encostar. **Verificada localmente
+      pelo usuário (vídeo conferido).**
+- [x] **Etapa 6 — Item System**: `ItemBaseDefinition`, `ItemInstance`,
+      `ItemRarity`, `ItemLevel`, `Tags`, catálogo em
+      `Data/Items/items.json`. **Verificada localmente pelo usuário
+      (vídeo conferido — compilou, JSON carregou, itens corretos).**
+- [x] **Etapa 7 — Inventory**: `Inventory` (stack/add/remove), integração
+      com loot (GroundItem/LootGenerator agora usam ItemInstance real),
+      `InventoryUI` básica (tecla I). **Verificada localmente pelo
+      usuário (vídeo conferido — painel abre, mostra raridade/stack
+      corretamente).**
+- [x] **Etapa 8 — Equipment**: todos os slots (Weapon, Offhand, Helmet,
+      Chest, Gloves, Boots, Amulet, Ring1, Ring2) via `Equipment`
+      (Game/Inventory), equipar/desequipar pela `InventoryUI`.
+      **Verificada localmente pelo usuário (vídeo conferido — arma
+      equipada no slot Weapon, com raridade e afixo corretos).**
+- [x] **Etapa 9 — Affixes**: `AffixDefinition`/`AffixInstance`/
+      `AffixDatabase`/`AffixRoller` — Prefix/Suffix, tiers, pools por tag,
+      pesos, catálogo em `Data/Items/affixes.json`. **Verificada
+      localmente pelo usuário (vídeo conferido — afixo "+1.1 Dano
+      Físico" exibido corretamente num item [Magic]).**
+- [x] **Etapa 10 — Crafting**: `MakeMagicEffect`/`RerollMagicModifiersEffect`/
+      `AddModifierEffect`/`UpgradeToRareEffect` (Game/Crafting), ligados a
+      4 itens de currency via `CraftingEffectId` (dado, não hardcode).
+      *(compilou e as 4 currencies aparecem corretamente no inventário no
+      vídeo da Etapa 8+9+10, mas nenhum "[usar]" foi clicado nele —
+      aplicar um efeito de crafting de verdade segue sem confirmação
+      visual, ver CURRENT_STATUS.md)*
+- [x] **Etapa 11 — Loot Presentation**: label, cor por raridade, contorno,
+      glow pulsante (Tween) e beam para Rare/Unique, partículas
+      (`CpuParticles2D`) para Unique — tudo em `GroundItem`/
+      `LootPresentation`. Som fica de fora (sem assets de áudio ainda,
+      ver ARCHITECTURE.md). *(implementado nesta branch; verificação
+      local ainda pendente — ver CURRENT_STATUS.md/HANDOFF.md)*
+- [x] **Etapa 12 — Loot Filter**: `LootFilterRule`/`LootFilterDatabase`
+      avaliando `Data/Loot/loot_filter.json` (condições: tags, raridade,
+      item level, currency; ações: show/hide, cor, tamanho de fonte,
+      contorno/glow/beam/partículas) — primeira regra que bate vence,
+      sem regra = defaults da Etapa 11. *(implementado nesta branch;
+      verificação local ainda pendente — ver CURRENT_STATUS.md/HANDOFF.md)*
+- [x] **Etapa 13 — Stash**: `Stash`/`StashCategory` (General/Equipment/
+      Currency/Unique), guardar/retirar pela `StashUI` (tecla T,
+      independente do Inventário). *(implementado nesta branch;
+      verificação local ainda pendente — ver CURRENT_STATUS.md/HANDOFF.md)*
 - [ ] **Etapa 14 — Primeiro Companion**: follow, HP, stats, equipamento,
       combate.
 - [ ] **Etapa 15 — Companion AI**: Follow/Attack/Retreat/Regroup.

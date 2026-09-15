@@ -1,0 +1,91 @@
+[
+  {
+    "id": "sword_rusty",
+    "name": "Espada Enferrujada",
+    "description": "Uma lâmina simples, gasta pelo tempo. Ainda corta.",
+    "tags": ["weapon", "sword", "melee", "physical", "equipable"],
+    "stackable": false,
+    "maxStackSize": 1,
+    "equipSlotCategory": "Weapon"
+  },
+  {
+    "id": "wand_apprentice",
+    "name": "Varinha de Aprendiz",
+    "description": "Madeira entalhada à mão, com um pequeno núcleo instável.",
+    "tags": ["weapon", "wand", "caster", "magic", "equipable"],
+    "stackable": false,
+    "maxStackSize": 1,
+    "equipSlotCategory": "Weapon"
+  },
+  {
+    "id": "vest_leather",
+    "name": "Colete de Couro",
+    "description": "Proteção básica para o torso, curtida artesanalmente.",
+    "tags": ["armor", "chest", "equipable"],
+    "stackable": false,
+    "maxStackSize": 1,
+    "equipSlotCategory": "Chest"
+  },
+  {
+    "id": "ring_plain",
+    "name": "Anel Simples",
+    "description": "Um anel de metal sem adornos. Frio ao toque.",
+    "tags": ["armor", "ring", "equipable"],
+    "stackable": false,
+    "maxStackSize": 1,
+    "equipSlotCategory": "Ring"
+  },
+  {
+    "id": "boots_worn",
+    "name": "Botas Gastas",
+    "description": "Já andaram mais do que deveriam. Ainda seguram firme.",
+    "tags": ["armor", "boots", "equipable"],
+    "stackable": false,
+    "maxStackSize": 1,
+    "equipSlotCategory": "Boots"
+  },
+  {
+    "id": "dust_fragment",
+    "name": "Fragmento de Poeira Antiga",
+    "description": "Resíduo cristalizado de algo muito mais antigo que a vila. Transforma um item comum em algo incomum.",
+    "tags": ["currency", "material"],
+    "stackable": true,
+    "maxStackSize": 99,
+    "craftingEffectId": "make_magic"
+  },
+  {
+    "id": "shard_reforging",
+    "name": "Lasca de Reforja",
+    "description": "Vibra levemente. Reembaralha as propriedades de um item incomum.",
+    "tags": ["currency", "material"],
+    "stackable": true,
+    "maxStackSize": 99,
+    "craftingEffectId": "reroll_magic"
+  },
+  {
+    "id": "crystal_amplification",
+    "name": "Cristal de Amplificação",
+    "description": "Denso e quente. Adiciona mais uma propriedade a um item.",
+    "tags": ["currency", "material"],
+    "stackable": true,
+    "maxStackSize": 99,
+    "craftingEffectId": "add_modifier"
+  },
+  {
+    "id": "orb_ascension",
+    "name": "Orbe de Ascensão",
+    "description": "Raro e instável. Eleva um item incomum a algo raro.",
+    "tags": ["currency", "material"],
+    "stackable": true,
+    "maxStackSize": 20,
+    "craftingEffectId": "upgrade_to_rare"
+  },
+  {
+    "id": "herb_minor_healing",
+    "name": "Erva Curativa Menor",
+    "description": "Folhas com leve efeito restaurador quando maceradas.",
+    "tags": ["consumable", "material"],
+    "stackable": true,
+    "maxStackSize": 20
+  }
+]

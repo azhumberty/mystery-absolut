@@ -1,0 +1,29 @@
+[
+  {
+    "tags": ["currency"],
+    "show": true,
+    "fontColor": { "r": 1.0, "g": 0.85, "b": 0.3 },
+    "showGlow": false,
+    "showBeam": false,
+    "showParticles": false
+  },
+  {
+    "tags": ["consumable"],
+    "show": true,
+    "fontColor": { "r": 0.4, "g": 0.9, "b": 0.4 },
+    "showGlow": false,
+    "showBeam": false,
+    "showParticles": false
+  },
+  {
+    "rarityIn": ["Rare", "Unique"],
+    "show": true,
+    "showOutline": true,
+    "showGlow": true,
+    "showBeam": true
+  },
+  {
+    "rarityIn": ["Normal"],
+    "show": false
+  }
+]

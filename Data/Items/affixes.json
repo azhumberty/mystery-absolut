@@ -1,0 +1,90 @@
+[
+  {
+    "id": "phys_damage_flat",
+    "nameTemplate": "+{0} Dano Físico",
+    "type": "Prefix",
+    "tier": 1,
+    "requiredItemLevel": 1,
+    "requiredTags": ["weapon"],
+    "minValue": 1,
+    "maxValue": 5,
+    "weight": 100
+  },
+  {
+    "id": "armor_flat",
+    "nameTemplate": "+{0} Defesa",
+    "type": "Prefix",
+    "tier": 1,
+    "requiredItemLevel": 1,
+    "requiredTags": ["armor"],
+    "minValue": 2,
+    "maxValue": 10,
+    "weight": 100
+  },
+  {
+    "id": "life_flat",
+    "nameTemplate": "+{0} Vida Máxima",
+    "type": "Prefix",
+    "tier": 1,
+    "requiredItemLevel": 1,
+    "requiredTags": [],
+    "minValue": 3,
+    "maxValue": 12,
+    "weight": 80
+  },
+  {
+    "id": "mana_flat",
+    "nameTemplate": "+{0} Mana Máxima",
+    "type": "Prefix",
+    "tier": 1,
+    "requiredItemLevel": 1,
+    "requiredTags": ["caster"],
+    "minValue": 3,
+    "maxValue": 12,
+    "weight": 60
+  },
+  {
+    "id": "attack_speed_percent",
+    "nameTemplate": "+{0}% Velocidade de Ataque",
+    "type": "Suffix",
+    "tier": 1,
+    "requiredItemLevel": 1,
+    "requiredTags": ["weapon"],
+    "minValue": 3,
+    "maxValue": 8,
+    "weight": 100
+  },
+  {
+    "id": "crit_chance_percent",
+    "nameTemplate": "+{0}% Chance de Acerto Crítico",
+    "type": "Suffix",
+    "tier": 1,
+    "requiredItemLevel": 1,
+    "requiredTags": ["weapon"],
+    "minValue": 5,
+    "maxValue": 15,
+    "weight": 70
+  },
+  {
+    "id": "resist_percent",
+    "nameTemplate": "+{0}% Resistência Elemental",
+    "type": "Suffix",
+    "tier": 1,
+    "requiredItemLevel": 1,
+    "requiredTags": ["armor"],
+    "minValue": 4,
+    "maxValue": 12,
+    "weight": 100
+  },
+  {
+    "id": "movement_speed_percent",
+    "nameTemplate": "+{0}% Velocidade de Movimento",
+    "type": "Suffix",
+    "tier": 1,
+    "requiredItemLevel": 1,
+    "requiredTags": ["boots"],
+    "minValue": 2,
+    "maxValue": 6,
+    "weight": 100
+  }
+]

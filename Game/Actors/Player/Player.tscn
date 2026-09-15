@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="Script" path="res://Game/Actors/Player/PlayerController.cs" id="1"]
+[ext_resource type="Script" path="res://Game/Combat/Health.cs" id="2"]
+[ext_resource type="Script" path="res://Game/Combat/Combatant.cs" id="3"]
+[ext_resource type="Script" path="res://Game/Combat/Hurtbox.cs" id="4"]
+[ext_resource type="Script" path="res://Game/Combat/Hitbox.cs" id="5"]
+[ext_resource type="Script" path="res://Game/Actors/Player/PlayerBasicAttack.cs" id="6"]
+[ext_resource type="Script" path="res://Game/Actors/Player/PlayerDodge.cs" id="7"]
+[ext_resource type="Script" path="res://Game/Actors/Player/PlayerBlock.cs" id="8"]
+[ext_resource type="Script" path="res://Game/Inventory/Inventory.cs" id="9"]
+[ext_resource type="Script" path="res://Game/Inventory/Equipment.cs" id="10"]
+[ext_resource type="Script" path="res://Game/Inventory/Stash.cs" id="11"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_player"]
 radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_attack"]
+size = Vector2(36, 26)
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -18,3 +31,47 @@ polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2")
+MaxHealth = 100.0
+
+[node name="Combatant" type="Node" parent="."]
+script = ExtResource("3")
+Team = 0
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_player")
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+script = ExtResource("5")
+Damage = 15.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+shape = SubResource("RectangleShape2D_attack")
+
+[node name="BasicAttack" type="Node" parent="."]
+script = ExtResource("6")
+
+[node name="Dodge" type="Node" parent="."]
+script = ExtResource("7")
+
+[node name="Block" type="Node" parent="."]
+script = ExtResource("8")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("9")
+
+[node name="Equipment" type="Node" parent="."]
+script = ExtResource("10")
+
+[node name="Stash" type="Node" parent="."]
+script = ExtResource("11")

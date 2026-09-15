@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="PackedScene" path="res://Game/Actors/Player/Player.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://Game/Combat/Dummy.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://Game/Actors/Enemies/Enemy.tscn" id="3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_top_bottom"]
 size = Vector2(864, 32)
@@ -86,3 +88,9 @@ polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
 
 [node name="Player" parent="." instance=ExtResource("1")]
 position = Vector2(0, 0)
+
+[node name="Dummy" parent="." instance=ExtResource("2")]
+position = Vector2(200, -150)
+
+[node name="Enemy" parent="." instance=ExtResource("3")]
+position = Vector2(-200, 150)
