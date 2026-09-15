@@ -14,6 +14,54 @@ arquivo diz isso explicitamente.
 
 ---
 
+## Entrada 9 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
+
+### O que foi feito
+
+1. **Correção do erro de compilação da Etapa 11+12+13**: O arquivo `Game/Loot/GroundItem.cs` tentava atribuir literais `double` (`0.0`, `25.0`, etc.) a propriedades float do `CpuParticles2D` do Godot. Corrigido com a adição do sufixo `f`.
+2. O código criado pelo Claude para todas as etapas (até a 13) estava solto e não-commitado localmente. Criei a branch **`feature/etapa-11-12-13-loot-presentation-filter-stash`** localmente e fiz o commit completo de todos os arquivos para garantir que o trabalho não fosse perdido e criar um ponto seguro.
+3. Compilação executada com sucesso via `dotnet build` (0 erros).
+
+### Como funciona
+
+(Sem alterações arquiteturais, apenas correção de sintaxe C# da Etapa 13).
+
+### Arquivos alterados/criados
+
+Modificados nesta sessão: `Game/Loot/GroundItem.cs` (correção dos literais float).
+Adicionados ao index e comitados: Todos os arquivos não trackeados das etapas 0 até 13.
+
+### Testes executados e resultados
+
+- ✅ Verificado nesta sessão: Compilação real do projeto (`dotnet build`). Sucesso com 0 avisos e 0 erros.
+- ❌ **NÃO testado**: O comportamento em runtime continua sem verificação. A apresentação visual dos itens (Etapa 11), o funcionamento do filtro em si (Etapa 12) e o armazenamento visual e lógico no Baú (Etapa 13) ainda precisam ser abertos no Godot e testados visualmente.
+- ❌ **NÃO testado**: O botão "[usar]" do crafting (Etapa 10) e a mecânica visual de dano no player (Etapa 3) continuam como pendências reais.
+
+### Pendências
+
+- Testar o jogo localmente no Godot (verificar comportamento da Etapa 11, 12 e 13).
+- Fazer o push da nova branch para o origin.
+
+### Erros conhecidos
+
+Nenhum erro de compilação conhecido. Os bugs visuais/runtime potenciais permanecem desconhecidos.
+
+### Branch / commit
+
+Trabalho feito e comitado na nova branch **`feature/etapa-11-12-13-loot-presentation-filter-stash`**.
+
+Comandos para enviar pro GitHub:
+```powershell
+git push -u origin feature/etapa-11-12-13-loot-presentation-filter-stash
+```
+
+### Prompt pronto para a próxima IA
+
+```text
+Leia HANDOFF.md (Entrada 9, a mais recente). O erro de compilação introduzido na Etapa 11+12+13 (GroundItem.cs) foi corrigido e o projeto agora compila perfeitamente (0 erros). Todo o código acumulado que estava não-commitado localmente foi guardado de forma segura na branch atual feature/etapa-11-12-13-loot-presentation-filter-stash. O próximo passo obrigatório é que o usuário teste o jogo no Godot para validar o Loot Presentation, Loot Filter e o Stash, bem como o click no botão de "[usar]" currency. NÃO inicie a Etapa 14 sem confirmação de que os testes passaram.
+```
+
+---
 ## Entrada 8 — 2026-09-15 — Claude (Sonnet 5, sessão claude.ai/code)
 
 ### O que foi feito
