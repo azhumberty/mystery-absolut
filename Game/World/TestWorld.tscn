@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://Game/Actors/Player/Player.tscn" id="1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top_bottom"]
+size = Vector2(864, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_right"]
+size = Vector2(32, 632)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obstacle_1"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obstacle_2"]
+size = Vector2(80, 80)
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="Floor" type="Polygon2D" parent="."]
+color = Color(0.180392, 0.203922, 0.219608, 1)
+polygon = PackedVector2Array(-450, -350, 450, -350, 450, 350, -450, 350)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Top" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, -316)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top"]
+shape = SubResource("RectangleShape2D_top_bottom")
+
+[node name="Visual" type="Polygon2D" parent="Walls/Top"]
+color = Color(0.427451, 0.454902, 0.478431, 1)
+polygon = PackedVector2Array(-432, -16, 432, -16, 432, 16, -432, 16)
+
+[node name="Bottom" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 316)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom"]
+shape = SubResource("RectangleShape2D_top_bottom")
+
+[node name="Visual" type="Polygon2D" parent="Walls/Bottom"]
+color = Color(0.427451, 0.454902, 0.478431, 1)
+polygon = PackedVector2Array(-432, -16, 432, -16, 432, 16, -432, 16)
+
+[node name="Left" type="StaticBody2D" parent="Walls"]
+position = Vector2(-416, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left"]
+shape = SubResource("RectangleShape2D_left_right")
+
+[node name="Visual" type="Polygon2D" parent="Walls/Left"]
+color = Color(0.427451, 0.454902, 0.478431, 1)
+polygon = PackedVector2Array(-16, -316, 16, -316, 16, 316, -16, 316)
+
+[node name="Right" type="StaticBody2D" parent="Walls"]
+position = Vector2(416, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
+shape = SubResource("RectangleShape2D_left_right")
+
+[node name="Visual" type="Polygon2D" parent="Walls/Right"]
+color = Color(0.427451, 0.454902, 0.478431, 1)
+polygon = PackedVector2Array(-16, -316, 16, -316, 16, 316, -16, 316)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Obstacle1" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(-150, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle1"]
+shape = SubResource("RectangleShape2D_obstacle_1")
+
+[node name="Visual" type="Polygon2D" parent="Obstacles/Obstacle1"]
+color = Color(0.545098, 0.352941, 0.243137, 1)
+polygon = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
+
+[node name="Obstacle2" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(150, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Obstacle2"]
+shape = SubResource("RectangleShape2D_obstacle_2")
+
+[node name="Visual" type="Polygon2D" parent="Obstacles/Obstacle2"]
+color = Color(0.545098, 0.352941, 0.243137, 1)
+polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(0, 0)
