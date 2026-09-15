@@ -34,9 +34,9 @@ public partial class EnemyController : CharacterBody2D
     [Export] public float RecoverDuration = 0.5f;
     [Export] public float Damage = 10f;
 
-    [Export] public float LootDropChance = 0.5f;
-    [Export] public int MinLootDrops = 1;
-    [Export] public int MaxLootDrops = 2;
+    [Export] public float LootDropChance = 1.0f;
+    [Export] public int MinLootDrops = 2;
+    [Export] public int MaxLootDrops = 4;
 
     public State CurrentState { get; private set; } = State.Idle;
 
@@ -148,8 +148,8 @@ public partial class EnemyController : CharacterBody2D
     {
         CurrentState = State.Dead;
         Velocity = Vector2.Zero;
-        CollisionLayer = 0;
-        CollisionMask = 0;
+        SetDeferred(CollisionObject2D.PropertyName.CollisionLayer, 0);
+        SetDeferred(CollisionObject2D.PropertyName.CollisionMask, 0);
         _hitbox.Deactivate();
         _visual.Modulate = new Color(0.4f, 0.4f, 0.4f, 0.5f);
         SetPhysicsProcess(false);

@@ -14,6 +14,24 @@ arquivo diz isso explicitamente.
 
 ---
 
+## Entrada 11 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
+
+### O que foi feito
+
+1. **Correção do Erro de Física do Godot**: O Godot disparava um erro (`Can't change this state while flushing queries`) no depurador ao derrotar o inimigo. Isso ocorria porque estávamos modificando a colisão física (`CollisionLayer`, `CollisionMask` e `Monitoring` da Hitbox) diretamente durante o processamento do impacto do ataque (que ocorre dentro do loop de física do Godot).
+   - **Correção**: Atualizei `Hitbox.cs` e `EnemyController.cs` para utilizar `SetDeferred`, atrasando a desativação da colisão de forma segura para o final do frame físico. O erro desapareceu.
+2. **Aumento dos Drops para Teste**: O usuário solicitou que os drops fossem aumentados, pois a chance estava muito baixa para facilitar o teste.
+   - **Correção**: No arquivo `EnemyController.cs`, aumentei o `LootDropChance` para `1.0f` (100% de chance de dropar loot ao morrer). Também aumentei a quantidade gerada por inimigo: `MinLootDrops` de 1 para 2, e `MaxLootDrops` de 2 para 4.
+
+### Testes executados e resultados
+
+- ✅ Compilação executada com sucesso (`dotnet build`). 0 erros.
+
+### Pendências
+
+- O usuário testará novamente o jogo localmente para verificar a ausência do erro vermelho no console, e testar se os itens caem em maior quantidade.
+
+---
 ## Entrada 10 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
 
 ### O que foi feito

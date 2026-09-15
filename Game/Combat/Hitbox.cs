@@ -33,12 +33,12 @@ public partial class Hitbox : Area2D
     public void Activate()
     {
         _alreadyHit.Clear();
-        Monitoring = true;
+        SetDeferred(Area2D.PropertyName.Monitoring, true);
     }
 
     public void Deactivate()
     {
-        Monitoring = false;
+        SetDeferred(Area2D.PropertyName.Monitoring, false);
     }
 
     private void OnAreaEntered(Area2D area)
