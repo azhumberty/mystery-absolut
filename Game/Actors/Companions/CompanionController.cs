@@ -17,7 +17,9 @@ public partial class CompanionController : CharacterBody2D
         Follow,
         Attack,
         Recover,
-        Downed
+        Downed,
+        Retreat,
+        Regroup
     }
 
     [Export] public float FollowRange = 60f;
@@ -71,6 +73,17 @@ public partial class CompanionController : CharacterBody2D
             Velocity = Vector2.Zero;
             MoveAndSlide();
             return;
+        }
+
+        if (Input.IsActionJustPressed("companion_regroup"))
+        {
+            CurrentState = State.Regroup;
+            _targetEnemy = null;
+        }
+        else if (CurrentState != State.Regroup && _health.CurrentHealth / _health.MaxHealth <= 0.2f && CurrentState != State.Retreat)
+        {
+            CurrentState = State.Retreat;
+            _targetEnemy = null;
         }
 
         UpdateTargetEnemy();
@@ -136,6 +149,44 @@ public partial class CompanionController : CharacterBody2D
                 if (_stateTimer <= 0.0)
                 {
                     CurrentState = State.Idle;
+                }
+                break;
+
+            case State.Retreat:
+                if (_health.CurrentHealth / _health.MaxHealth > 0.2f)
+                {
+                    CurrentState = State.Idle;
+                }
+                else if (_targetEnemy != null)
+                {
+                    // Run away from enemy
+                    Velocity = (GlobalPosition - _targetEnemy.GlobalPosition).Normalized() * MoveSpeed;
+                    
+                    // But don't stray too far from player
+                    if (distanceToPlayer > FollowRange * 1.5f)
+                    {
+                        Velocity = (_player.GlobalPosition - GlobalPosition).Normalized() * MoveSpeed;
+                    }
+                }
+                else if (distanceToPlayer > StopRange)
+                {
+                    Velocity = (_player.GlobalPosition - GlobalPosition).Normalized() * MoveSpeed;
+                }
+                else
+                {
+                    Velocity = Vector2.Zero;
+                }
+                break;
+
+            case State.Regroup:
+                if (distanceToPlayer <= StopRange)
+                {
+                    CurrentState = State.Idle;
+                    Velocity = Vector2.Zero;
+                }
+                else
+                {
+                    Velocity = (_player.GlobalPosition - GlobalPosition).Normalized() * MoveSpeed * 1.2f; // Run slightly faster
                 }
                 break;
         }

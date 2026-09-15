@@ -70,9 +70,9 @@ de etapas futuras antecipadamente.
       verificação local ainda pendente — ver CURRENT_STATUS.md/HANDOFF.md)*
 - [x] **Etapa 14 — Primeiro Companion**: follow, HP, stats, equipamento,
       combate. *(implementado nesta branch; verificação local ainda pendente)*
-- [ ] **Etapa 15 — Companion AI**: Follow/Attack/Retreat/Regroup.
-- [ ] **Etapa 16 — Dialogue**: sistema data-driven.
-- [ ] **Etapa 17 — Choices**: Choice/Condition/Action/Consequences,
+- [x] **Etapa 15 — Companion AI**: Follow/Attack/Retreat/Regroup.
+- [x] **Etapa 16 — Dialogue**: sistema data-driven.
+- [x] **Etapa 17 — Choices**: Choice/Condition/Action/Consequences,
       WorldState.
 - [ ] **Etapa 18 — Relationships**: Affinity, RelationshipState, Memories.
 - [ ] **Etapa 19 — Quests**: QuestDefinition/QuestState/Objectives/Rewards.

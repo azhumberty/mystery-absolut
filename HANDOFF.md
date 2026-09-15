@@ -14,6 +14,48 @@ arquivo diz isso explicitamente.
 
 ---
 
+## Entrada 13 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
+
+### O que foi feito
+
+O usuário solicitou explicitamente a implementação conjunta das **Etapas 15, 16 e 17**, que foram executadas numa mesma iteração pois dependem umas das outras.
+
+1. **Etapa 15 (Companion AI - Regroup/Retreat)**:
+   - Adicionado novo Input Map: `companion_regroup` na tecla `V`.
+   - `CompanionController.cs` agora tem os estados `Regroup` e `Retreat`.
+   - **Regroup**: Ao apertar `V`, o Companion cancela o ataque, ignora os inimigos e corre direto para o Player até chegar bem perto.
+   - **Retreat**: Se o Companion estiver com menos de 20% de vida, ele tenta se afastar automaticamente do inimigo, mas não corre solto, ele tenta recuar sem ir muito longe do jogador.
+2. **Etapa 17 (WorldState / Choices)**:
+   - Criado o singleton `Game/Narrative/WorldState.cs` (um `Dictionary<string, int>` que gerencia as variáveis de progresso global, como `companion_hired`).
+   - Criado `ChoiceCondition.cs` e `ChoiceAction.cs` permitindo que escolhas de diálogo validem operadores matemáticos contra variáveis globais (ex: se `ouro >= 10`) ou setem variáveis ao clicar.
+3. **Etapa 16 (Dialogue System - Data-Driven)**:
+   - Criados `DialogueDefinition.cs` e `DialogueNode.cs` para desserializar os diálogos.
+   - Criado `Game/Narrative/DialogueDatabase.cs` para carregar `Data/Narrative/dialogues.json`.
+   - Criado um JSON de teste `dialogues.json` contendo `test_companion_talk`.
+   - Adicionada uma `DialogueUI` com `process_mode = 3` (Always), que pausa o jogo ao iniciar (`GetTree().Paused = true`) e exibe o texto com botões dinâmicos lidos do JSON.
+   - Adicionado `interact` na tecla `E`.
+   - **Teste Rápido**: Em `TestWorld.cs`, ao apertar `E`, o diálogo `test_companion_talk` (lido do JSON) é exibido na tela, usando os Action Conditions da etapa 17.
+
+### Testes executados e resultados
+
+- ✅ Compilação (`dotnet build`) feita com sucesso (0 erros, 0 avisos).
+
+### Pendências
+
+- O usuário precisa rodar a `TestWorld.tscn` para confirmar se o diálogo UI abriu ao apertar E e se a tela pausou, e testar o Companion com a tecla V.
+
+### Branch / commit
+
+Commit efetuado: `Etapa 15, 16 e 17: IA de Retreat/Regroup, Dialogue UI e WorldState`.
+
+### Prompt pronto para a próxima IA
+
+```text
+Leia HANDOFF.md (Entrada 13). As Etapas 15, 16 e 17 foram implementadas juntas, fornecendo IA tática avançada, WorldState e o Sistema de Diálogos (Data-driven JSON). O usuário está validando se a UI de Diálogo e o Companion Retreat funcionam. Não inicie a Etapa 18 (Relationships) até que o jogador confirme que os sistemas de escolhas e diálogos funcionaram sem bugs no jogo rodando.
+```
+
+---
+
 ## Entrada 12 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
 
 ### O que foi feito

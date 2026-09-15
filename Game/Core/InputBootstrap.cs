@@ -36,11 +36,16 @@ public partial class InputBootstrap : Node
         // independent of "inventory" so both can be open at once.
         RegisterAction("stash", Key.T);
 
+        // Etapa 15 (Companion AI Avançada): Regroup
+        RegisterAction("companion_regroup", Key.V);
+
         // Reserved for upcoming stages. Intentionally NOT bound to any key
         // yet — declaring the action here only reserves the name so future
         // systems can reference it without touching this file.
         // RegisterAction("skill_1");
-        // RegisterAction("interact");
+        
+        // Etapa 16: Interact
+        RegisterAction("interact", Key.E);
     }
 
     private static void RegisterAction(string action, params Key[] keys)

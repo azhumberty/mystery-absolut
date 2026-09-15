@@ -1,0 +1,61 @@
+[
+  {
+    "id": "test_companion_talk",
+    "startNodeId": "start",
+    "nodes": {
+      "start": {
+        "id": "start",
+        "speaker": "Companion",
+        "text": "Você precisa de ajuda com os inimigos?",
+        "choices": [
+          {
+            "text": "Sim, lute comigo.",
+            "nextNodeId": "agreed",
+            "action": {
+              "key": "companion_hired",
+              "operator": "=",
+              "value": 1
+            }
+          },
+          {
+            "text": "Não preciso de ajuda.",
+            "nextNodeId": "denied"
+          }
+        ]
+      },
+      "agreed": {
+        "id": "agreed",
+        "speaker": "Companion",
+        "text": "Certo! Estarei logo atrás de você. Aperte V se precisar recuar.",
+        "choices": [
+          {
+            "text": "[Sair]",
+            "nextNodeId": ""
+          }
+        ]
+      },
+      "denied": {
+        "id": "denied",
+        "speaker": "Companion",
+        "text": "Tudo bem, estarei aqui se mudar de ideia.",
+        "choices": [
+          {
+            "text": "[Sair]",
+            "nextNodeId": ""
+          }
+        ]
+      },
+      "already_hired": {
+        "id": "already_hired",
+        "speaker": "Companion",
+        "text": "Estamos juntos nessa jornada!",
+        "choices": [
+          {
+            "text": "[Sair]",
+            "nextNodeId": ""
+          }
+        ]
+      }
+    }
+  }
+]
