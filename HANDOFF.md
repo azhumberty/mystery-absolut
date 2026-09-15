@@ -14,6 +14,24 @@ arquivo diz isso explicitamente.
 
 ---
 
+## Entrada 10 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
+
+### O que foi feito
+
+1. **Correção do Pickup de Loot**: O usuário relatou que os itens estavam caindo dentro do corpo do inimigo morto, impossibilitando a coleta. A causa raiz era que o `EnemyController` mudava para o estado `Dead` e parava de processar física, mas **não desabilitava sua colisão física** (`CollisionShape2D`). O jogador não conseguia andar até o centro do loot porque o "cadáver" continuava sólido.
+   - **Correção**: Modifiquei o `EnemyController.cs` para zerar `CollisionLayer` e `CollisionMask` quando o inimigo morre (`OnDied`).
+   - Adicionalmente, aumentei o raio de dispersão no `LootGenerator.cs` (de 20 para 45 pixels) para que o loot dê um saltinho visual um pouco mais longe do centro.
+2. **Adição de mais inimigos**: Adicionei 4 novos inimigos no arquivo `Game/World/TestWorld.tscn` (espalhados pela arena) a pedido do usuário para facilitar os testes das novas mecânicas.
+
+### Testes executados e resultados
+
+- ✅ Compilação executada com sucesso (`dotnet build`). 0 erros.
+
+### Pendências
+
+- O usuário irá testar o jogo localmente agora para validar a coleta dos itens e o comportamento visual das partículas e filtros criados na sessão anterior.
+
+---
 ## Entrada 9 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
 
 ### O que foi feito
