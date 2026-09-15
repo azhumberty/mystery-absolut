@@ -148,6 +148,8 @@ public partial class EnemyController : CharacterBody2D
     {
         CurrentState = State.Dead;
         Velocity = Vector2.Zero;
+        CollisionLayer = 0;
+        CollisionMask = 0;
         _hitbox.Deactivate();
         _visual.Modulate = new Color(0.4f, 0.4f, 0.4f, 0.5f);
         SetPhysicsProcess(false);

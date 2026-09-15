@@ -97,7 +97,7 @@ public partial class LootGenerator : Node
     private static Vector2 RandomOffset()
     {
         float angle = (float)(Random.NextDouble() * Mathf.Tau);
-        float distance = (float)Random.NextDouble() * 20f;
+        float distance = (float)Random.NextDouble() * 45f;
         return Vector2.FromAngle(angle) * distance;
     }
 }
