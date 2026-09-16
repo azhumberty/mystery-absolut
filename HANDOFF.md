@@ -14,6 +14,52 @@ arquivo diz isso explicitamente.
 
 ---
 
+## Entrada 17 — 2026-09-16 — Antigravity (Gemini 3.1 Pro)
+
+### O que foi feito
+
+Finalizamos a **Fase 5 (Etapas 28 a 30)** do `ROADMAP.md`! O projeto agora conta com todas as features essenciais do roadmap expandido.
+
+1. **Etapa 28 (Mercadores e Loja)**:
+   - Adicionado o componente `Gold.cs` ao Player.
+   - Criado o NPC `Merchant.tscn` (quadrado laranja escuro) e colocado na `Village.tscn`.
+   - Adicionada a interface `ShopUI` para gastar ouro (botão de compra de poções).
+2. **Etapa 29 (Dungeons Procedurais)**:
+   - Criamos `DungeonGenerator.tscn` e `DungeonGenerator.cs`, que agora substitui a antiga `Dungeon1` estática.
+   - A classe desenha 5 salas horizontalmente usando geometria básica e as preenche com Inimigos, instanciando o Boss garantidamente na última sala.
+   - O teleporte da Floresta (`Wilds.tscn`) foi redirecionado para esta nova dungeon dinâmica.
+3. **Etapa 30 (Sistema de Áudio Global)**:
+   - Criado o Autoload `AudioManager.cs` no `project.godot`.
+   - A classe possui um pequeno sintetizador procedural que gera bipes audíveis de diferentes frequências (sinewave puro) usando código C#, contornando a ausência de arquivos `.wav`.
+   - Dispara sons ao Atacar, usar Magia e ao dropar Loot.
+4. **Bugfix Físico/Referência**:
+   - Descobrimos e corrigimos um typo gravíssimo de Cena Corrompida (Parse Error). Ao injetar os scripts na Etapa 26, o nome do nó `SubResource("RectangleShape2D_attack")` havia sido renomeado erroneamente para `RectangleShape2D_player_attack`. Isso causava falha no carregamento de `Player.tscn` que desabava toda a cena `Main.tscn`. Resolvido!
+
+### Testes executados e resultados
+
+- ✅ O jogo carrega perfeitamente (Cenas recuperadas).
+- ✅ Atacar gera sons.
+- ✅ O portal leva à Dungeon Procedural com inimigos.
+- ✅ O Mercador abre a interface da loja.
+
+### Pendências
+
+- O Roadmap Base + Fase 5 estendida estão 100% concluídos!
+- Caso o usuário deseje, o projeto pode entrar em fase de Refatoração e Polimento Visual (Sprites, UI definitiva, Sons definitivos).
+
+### Branch / commit
+
+Commit: `Etapas 28 a 30: Mercadores, Dungeons Aleatorias e Sons`.
+Branch atual: `feature/etapa-11-12-13-loot-presentation-filter-stash`.
+
+### Prompt pronto para a próxima IA
+
+```text
+Leia HANDOFF.md (Entrada 17). O ROADMAP de Etapas 1 até a 30 foi COMPLETAMENTE concluído! O projeto conta com combate, magias, quests, save, lojas, talentos e dungeons procedurais. Aguarde instruções do usuário sobre qual nova área de features (ex: Multijogador, Refatoração Visual, Novas Classes) ele deseja expandir, pois a fundação RPG está finalizada.
+```
+
+---
+
 ## Entrada 16 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
 
 ### O que foi feito
