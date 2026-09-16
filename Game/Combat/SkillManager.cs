@@ -1,4 +1,5 @@
 using Godot;
+using Game.Core;
 
 namespace Game.Combat;
 
@@ -37,6 +38,10 @@ public partial class SkillManager : Node
             
             // Add to scene root (don't attach to player so it flies independently)
             owner.GetTree().CurrentScene.AddChild(proj);
+
+            var audio = owner.GetNodeOrNull<AudioManager>("/root/AudioManager");
+            audio?.PlayMagic();
+
             return true;
         }
 

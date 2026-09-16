@@ -14,6 +14,49 @@ arquivo diz isso explicitamente.
 
 ---
 
+## Entrada 16 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
+
+### O que foi feito
+
+Adicionamos a **Fase 5 (Etapas 25 a 30)** ao `ROADMAP.md` e já concluímos as Etapas 25, 26 e 27. O esqueleto "Vertical Slice" virou um verdadeiro Action RPG.
+
+1. **Etapa 25 (Status e Nivelamento)**:
+   - O Player agora tem o componente `Stats.cs`.
+   - Inimigos normais dão 20 de XP e o Boss dá 150 de XP.
+   - Quando o XP atinge `Level * 100`, o Player sobe de nível e ganha um "Skill Point".
+2. **Etapa 26 (Habilidades Ativas e Mana)**:
+   - Adicionados `Mana.cs` e `SkillManager.cs` ao Player. O Player agora tem 100 de Mana máxima que regenera sozinha.
+   - Pressionar a tecla **Q** consome 20 de Mana e dispara um projétil (Fireball), utilizando `Projectile.cs` e `Projectile.tscn`, que causa 25 de dano em qualquer inimigo no caminho.
+3. **Etapa 27 (Árvore de Talentos)**:
+   - Criada a tela `SkillTreeUI` (acessível apertando a tecla **K**).
+   - Mostra o Level e os Pontos de Skill. Você pode gastar os Pontos de Skill clicando nos botões para aumentar permanentemente `Força`, `Destreza` ou `Inteligência`.
+4. **Bugfix Físico de Geração de Loot**:
+   - Descobrimos que o erro `Can't change this state while flushing queries` ocorria especificamente pela geração instantânea de múltiplos itens físicos (`GroundItem.tscn`) via `LootGenerator` enquanto o motor ainda resolvia o impacto do ataque da morte. Isso foi resolvido trocando `parent.AddChild()` por `parent.CallDeferred("add_child")`.
+
+### Testes executados e resultados
+
+- ✅ O tiro de Magia (Fireball) cruza o cenário perfeitamente.
+- ✅ Matar monstros sobe o nível (visualizado na tela apertando K).
+- ✅ Nenhum erro vermelho ocorreu no console ao matar o Boss (drop de múltiplos itens agora ocorre sob demanda segura).
+
+### Pendências
+
+- Próximos passos da Fase 5: Implementar Mercadores (Shop - Etapa 28), Dungeons Procedurais (Etapa 29) ou Música/Som (Etapa 30).
+- Os atributos ganhos na árvore de talentos (STR/DEX/INT) ainda precisam ser linkados às fórmulas de Dano.
+
+### Branch / commit
+
+Commit: `Etapas 25 a 27: Sistema de Nivelamento, Mana, Magia (Fireball) e Skill Tree`.
+Branch atual: `feature/etapa-11-12-13-loot-presentation-filter-stash`.
+
+### Prompt pronto para a próxima IA
+
+```text
+Leia HANDOFF.md (Entrada 16). O jogo entrou na Fase 5 (Etapas 25 a 30). O personagem agora possui Level, Mana, atira magias (Fireball) e possui tela de Status/Talentos. Para evoluir ainda mais o projeto, verifique as Etapas pendentes do ROADMAP.md (Mercadores, Dungeons Procedurais ou Integração de Áudio). Sugira ao usuário qual dessas partes ele deseja implementar primeiro.
+```
+
+---
+
 ## Entrada 15 — 2026-09-15 — Antigravity (Gemini 3.1 Pro)
 
 ### O que foi feito

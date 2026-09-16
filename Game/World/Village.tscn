@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" path="res://UI/LootFilterUI.tscn" id="7"]
 [ext_resource type="Script" path="res://Game/World/Teleporter.cs" id="8"]
 [ext_resource type="PackedScene" path="res://UI/SkillTreeUI.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://Game/Actors/NPCs/Merchant.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://UI/ShopUI.tscn" id="11"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_teleporter"]
 size = Vector2(80, 80)
@@ -24,6 +26,9 @@ position = Vector2(-200, 0)
 
 [node name="Companion" parent="." instance=ExtResource("2")]
 position = Vector2(100, 0)
+
+[node name="Merchant" parent="." instance=ExtResource("10")]
+position = Vector2(0, 200)
 
 [node name="Teleporter" type="Area2D" parent="."]
 position = Vector2(400, 0)
@@ -45,3 +50,4 @@ polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
 [node name="DialogueUI" parent="." instance=ExtResource("6")]
 [node name="LootFilterUI" parent="." instance=ExtResource("7")]
 [node name="SkillTreeUI" parent="." instance=ExtResource("9")]
+[node name="ShopUI" parent="." instance=ExtResource("11")]

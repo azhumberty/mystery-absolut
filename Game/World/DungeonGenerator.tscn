@@ -1,0 +1,27 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://Game/World/DungeonGenerator.cs" id="1"]
+[ext_resource type="PackedScene" path="res://Game/Actors/Enemies/Enemy.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://Game/Actors/Enemies/Boss.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Game/Actors/Player/Player.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://UI/QuestUI.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://UI/InventoryUI.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://UI/StashUI.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://UI/DialogueUI.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://UI/LootFilterUI.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://UI/SkillTreeUI.tscn" id="10"]
+
+[node name="DungeonGenerator" type="Node2D"]
+script = ExtResource("1")
+EnemyScene = ExtResource("2")
+BossScene = ExtResource("3")
+
+[node name="Player" parent="." instance=ExtResource("4")]
+position = Vector2(0, 0)
+
+[node name="QuestUI" parent="." instance=ExtResource("5")]
+[node name="InventoryUI" parent="." instance=ExtResource("6")]
+[node name="StashUI" parent="." instance=ExtResource("7")]
+[node name="DialogueUI" parent="." instance=ExtResource("8")]
+[node name="LootFilterUI" parent="." instance=ExtResource("9")]
+[node name="SkillTreeUI" parent="." instance=ExtResource("10")]

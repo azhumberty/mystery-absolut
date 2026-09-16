@@ -61,6 +61,9 @@ public partial class LootGenerator : Node
         groundItem.Payload = instance;
         parent.CallDeferred("add_child", groundItem);
         groundItem.GlobalPosition = worldPosition + RandomOffset();
+
+        var audio = GetNodeOrNull<Game.Core.AudioManager>("/root/AudioManager");
+        audio?.PlayLoot();
     }
 
     private static ItemInstance RollItemInstance()

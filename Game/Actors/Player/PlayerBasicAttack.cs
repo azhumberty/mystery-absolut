@@ -55,6 +55,10 @@ public partial class PlayerBasicAttack : Node
     {
         _hitbox.Position = _player.FacingDirection * AttackRange;
         _hitbox.Activate();
+
+        var audio = GetNodeOrNull<Game.Core.AudioManager>("/root/AudioManager");
+        audio?.PlayAttack();
+
         _activeTimeRemaining = AttackDuration;
         _cooldown.Start(CooldownDuration);
     }

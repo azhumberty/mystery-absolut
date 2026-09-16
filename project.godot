@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 InputBootstrap="*res://Game/Core/InputBootstrap.cs"
+AudioManager="*res://Game/Core/AudioManager.cs"
 
 [display]
 

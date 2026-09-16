@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Game/Combat/Mana.cs" id="13"]
 [ext_resource type="Script" path="res://Game/Combat/SkillManager.cs" id="14"]
 [ext_resource type="PackedScene" path="res://Game/Combat/Projectile.tscn" id="15"]
+[ext_resource type="Script" path="res://Game/Inventory/Gold.cs" id="16"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_player"]
 radius = 16.0
@@ -61,13 +62,16 @@ Damage = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
 position = Vector2(32, 0)
-shape = SubResource("RectangleShape2D_player_attack")
+shape = SubResource("RectangleShape2D_attack")
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("12")
 
 [node name="Mana" type="Node" parent="."]
 script = ExtResource("13")
+
+[node name="Gold" type="Node" parent="."]
+script = ExtResource("16")
 
 [node name="SkillManager" type="Node" parent="."]
 script = ExtResource("14")
